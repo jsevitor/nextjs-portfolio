@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <div className="container mx-auto border border-red-500 h-[calc(100vh-88px)] flex items-center justify-center">
+    <div className="container mx-auto h-[calc(100vh-88px)] flex items-center justify-center">
       <div className="flex flex-col items-center justify-center gap-8 h-1/4 sm:h-1/2 lg:h-2/3  border border-foreground px-8 lg:w-full">
         <h1 className="text-4xl sm:text-6xl lg:text-8xl xl:text-9xl font-semibold">
           VITOR OLIVEIRA

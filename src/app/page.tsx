@@ -1,13 +1,13 @@
-import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
 
 export default function Home() {
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <Hero />
-      <h1>PORTFOLIO</h1>
+      <About />
     </div>
   );
 }
