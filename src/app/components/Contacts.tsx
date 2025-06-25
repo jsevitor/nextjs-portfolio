@@ -18,7 +18,6 @@ export default function Contacts() {
       const res = await fetch("https://dashfolio.netlify.app/api/contacts");
       if (!res.ok) throw new Error("Erro ao buscar projetos");
       const data = await res.json();
-      console.log(data);
       setContacts(data);
     } catch (error) {
       console.error("Erro:", error);
