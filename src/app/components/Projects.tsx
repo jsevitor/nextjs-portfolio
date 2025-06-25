@@ -42,7 +42,10 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 my-16 md:px-0">
+    <div
+      className="container mx-auto px-4 my-16 md:px-0 pt-[88px]"
+      id="projects"
+    >
       <div className="flex flex-col gap-8 py-8">
         <div className="border-l-2 border-foreground pl-8">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[100] py-2">
