@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
+import Footer from "./components/Footer";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -30,7 +31,10 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
       </head>
-      <body className={`${lexend.className}  antialiased`}>{children}</body>
+      <body className={`${lexend.className}  antialiased`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
