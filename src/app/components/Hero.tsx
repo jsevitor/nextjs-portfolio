@@ -4,7 +4,7 @@ export default function Hero() {
       className="container mx-auto h-screen pt-[88px] flex items-center justify-center"
       id="home"
     >
-      <div className="flex flex-col items-center justify-center gap-8 h-1/4 sm:h-1/2 lg:h-2/3  border border-foreground px-8 lg:w-full">
+      <div className="flex flex-col items-center justify-center gap-8 h-2/4 sm:h-1/2 lg:h-2/3  border border-foreground px-8 lg:w-full">
         <h1 className="text-4xl sm:text-6xl lg:text-8xl xl:text-9xl font-semibold">
           VITOR OLIVEIRA
         </h1>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ButtonBlack, ButtonWhite } from "./Buttons";
+import { ProjectCardSkeleton } from "./Skeletons";
 
 interface Project {
   id: string;
@@ -25,6 +26,7 @@ interface Tech {
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchProjects = async () => {
     try {
@@ -34,6 +36,8 @@ export default function Projects() {
       setProjects(data);
     } catch (error) {
       console.error("Erro:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -54,28 +58,33 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-16">
-          {projects.slice(0, 4).map((item) => (
-            <div key={item.id} className="flex flex-col gap-2">
-              <div className="shrink-0 rounded">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={750}
-                  height={354}
-                  className="rounded"
-                />
-              </div>
-              <div className="text-xl">{item.title}</div>
-              <div className="font-extralight">
-                {item.projectTechs.map(({ tech }) => tech.name).join(" | ")}
-              </div>
-              <div className="flex gap-4 mt-4">
-                <ButtonWhite label="Demo" url={item.demoUrl} />
-                <ButtonBlack label="Repositorio" url={item.repoUrl} />
-              </div>
-            </div>
-          ))}
+          {loading
+            ? Array.from({ length: 4 }).map((_, idx) => (
+                <ProjectCardSkeleton key={idx} />
+              ))
+            : projects.slice(0, 4).map((item) => (
+                <div key={item.id} className="flex flex-col gap-2">
+                  <div className="shrink-0 rounded">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={750}
+                      height={354}
+                      className="rounded"
+                    />
+                  </div>
+                  <div className="text-xl">{item.title}</div>
+                  <div className="font-extralight">
+                    {item.projectTechs.map(({ tech }) => tech.name).join(" | ")}
+                  </div>
+                  <div className="flex gap-4 mt-4">
+                    <ButtonWhite label="Demo" url={item.demoUrl} />
+                    <ButtonBlack label="Repositorio" url={item.repoUrl} />
+                  </div>
+                </div>
+              ))}
         </div>
+
         <div className="flex justify-center ">
           <ButtonWhite label="Ver todos os projetos" url="/projects" />
         </div>

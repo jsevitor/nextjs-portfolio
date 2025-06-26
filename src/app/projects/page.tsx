@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ProjectSkeleton } from "@/app/components/Skeletons";
 import { useEffect, useState } from "react";
 import { ButtonBlack, ButtonWhite } from "@/app/components/Buttons";
 
@@ -21,6 +22,7 @@ interface Project {
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchProjects = async () => {
     try {
@@ -30,6 +32,8 @@ export default function ProjectsPage() {
       setProjects(data);
     } catch (error) {
       console.error("Erro:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,37 +54,43 @@ export default function ProjectsPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {projects.map((item) => (
-            <div key={item.id} className="flex flex-col gap-4">
-              <div className="shrink-0 rounded">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={520}
-                  height={300}
-                  className="rounded"
-                />
-              </div>
-              <div className="flex flex-col justify-center gap-4">
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-xl">{item.title}</h3>
-                  <p className="font-extralight h-auto md:h-[100px]">
-                    {item.description}
-                  </p>
+          {loading
+            ? Array.from({ length: 6 }).map((_, idx) => (
+                <ProjectSkeleton key={idx} />
+              ))
+            : projects.map((item) => (
+                <div key={item.id} className="flex flex-col gap-4">
+                  <div className="shrink-0 rounded">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={520}
+                      height={300}
+                      className="rounded"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center gap-4">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-xl">{item.title}</h3>
+                      <p className="font-extralight h-auto md:h-[100px]">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="flex flex-col">
+                      <h4 className="text-sm">Tecnologias:</h4>
+                      <p className="font-extralight">
+                        {item.projectTechs
+                          .map(({ tech }) => tech.name)
+                          .join(" | ")}
+                      </p>
+                    </div>
+                    <div className="flex gap-4">
+                      <ButtonWhite label="Demo" url={item.demoUrl} />
+                      <ButtonBlack label="Repositorio" url={item.repoUrl} />
+                    </div>
+                  </div>
                 </div>
-                <div className="flex flex-col ">
-                  <h4 className="text-sm">Tecnologias:</h4>
-                  <p className="font-extralight">
-                    {item.projectTechs.map(({ tech }) => tech.name).join(" | ")}
-                  </p>
-                </div>
-                <div className="flex gap-4">
-                  <ButtonWhite label="Demo" url={item.demoUrl} />
-                  <ButtonBlack label="Repositorio" url={item.repoUrl} />
-                </div>
-              </div>
-            </div>
-          ))}
+              ))}
         </div>
       </div>
     </div>
