@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function Header() {
   const menu = [
-    { label: "Home", href: "#home" },
-    { label: "Sobre", href: "#about" },
-    { label: "Projetos", href: "#projects" },
-    { label: "Contato", href: "#contacts" },
+    { label: "Home", href: "/#home" },
+    { label: "Sobre", href: "/#about" },
+    { label: "Projetos", href: "/#projects" },
+    { label: "Contato", href: "/#contacts" },
   ];
 
   return (

@@ -1,0 +1,88 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { ButtonBlack, ButtonWhite } from "@/app/components/Buttons";
+
+interface Project {
+  id: string;
+  title: string;
+  image: string;
+  description: string;
+  projectTechs: {
+    tech: {
+      id: string;
+      name: string;
+    };
+  }[];
+  demoUrl: string;
+  repoUrl: string;
+}
+
+export default function ProjectsPage() {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch("https://dashfolio.netlify.app/api/projects");
+      if (!res.ok) throw new Error("Erro ao buscar projetos");
+      const data = await res.json();
+      setProjects(data);
+    } catch (error) {
+      console.error("Erro:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  return (
+    <div
+      className="container mx-auto px-4 my-16 md:px-0 pt-[88px]"
+      id="projects"
+    >
+      <div className="flex flex-col gap-8 pb-8">
+        <div className="border-l-2 border-foreground pl-8 mb-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[100] py-2">
+            PROJETOS
+          </h1>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {projects.map((item) => (
+            <div key={item.id} className="flex flex-col gap-4">
+              <div className="shrink-0 rounded">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={520}
+                  height={300}
+                  className="rounded"
+                />
+              </div>
+              <div className="flex flex-col justify-center gap-4">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-xl">{item.title}</h3>
+                  <p className="font-extralight h-auto md:h-[100px]">
+                    {item.description}
+                  </p>
+                </div>
+                <div className="flex flex-col ">
+                  <h4 className="text-sm">Tecnologias:</h4>
+                  <p className="font-extralight">
+                    {item.projectTechs.map(({ tech }) => tech.name).join(" | ")}
+                  </p>
+                </div>
+                <div className="flex gap-4">
+                  <ButtonWhite label="Demo" url={item.demoUrl} />
+                  <ButtonBlack label="Repositorio" url={item.repoUrl} />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
