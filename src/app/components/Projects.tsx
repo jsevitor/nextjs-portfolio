@@ -19,11 +19,6 @@ interface Project {
   repoUrl: string;
 }
 
-interface Tech {
-  id: number;
-  name: string;
-}
-
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
