@@ -9,6 +9,7 @@ interface Project {
   id: string;
   title: string;
   image: string;
+  isFeatured: boolean;
   projectTechs: {
     tech: {
       id: string;
@@ -54,27 +55,32 @@ export default function Projects() {
             ? Array.from({ length: 4 }).map((_, idx) => (
                 <ProjectCardSkeleton key={idx} />
               ))
-            : projects.slice(0, 4).map((item) => (
-                <div key={item.id} className="flex flex-col gap-2">
-                  <div className="shrink-0 rounded">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={750}
-                      height={354}
-                      className="rounded"
-                    />
+            : projects
+                .filter((p) => p.isFeatured)
+                .slice(0, 4)
+                .map((item) => (
+                  <div key={item.id} className="flex flex-col gap-2">
+                    <div className="shrink-0 rounded">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={750}
+                        height={354}
+                        className="rounded"
+                      />
+                    </div>
+                    <div className="text-xl">{item.title}</div>
+                    <div className="font-extralight">
+                      {item.projectTechs
+                        .map(({ tech }) => tech.name)
+                        .join(" | ")}
+                    </div>
+                    <div className="flex gap-4 mt-4">
+                      <ButtonWhite label="Demo" url={item.demoUrl} />
+                      <ButtonBlack label="Repositorio" url={item.repoUrl} />
+                    </div>
                   </div>
-                  <div className="text-xl">{item.title}</div>
-                  <div className="font-extralight">
-                    {item.projectTechs.map(({ tech }) => tech.name).join(" | ")}
-                  </div>
-                  <div className="flex gap-4 mt-4">
-                    <ButtonWhite label="Demo" url={item.demoUrl} />
-                    <ButtonBlack label="Repositorio" url={item.repoUrl} />
-                  </div>
-                </div>
-              ))}
+                ))}
         </div>
 
         <div className="flex justify-center ">
