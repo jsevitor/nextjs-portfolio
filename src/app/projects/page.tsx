@@ -71,14 +71,14 @@ export default function ProjectsPage() {
                   </div>
                   <div className="flex flex-col justify-center gap-4">
                     <div className="flex flex-col gap-2">
-                      <h3 className="text-xl">{item.title}</h3>
-                      <p className="font-extralight h-auto md:h-[100px]">
+                      <h3 className="2xl:text-xl">{item.title}</h3>
+                      <p className="text-sm font-extralight h-auto md:h-24">
                         {item.description}
                       </p>
                     </div>
                     <div className="flex flex-col">
-                      <h4 className="text-sm">Tecnologias:</h4>
-                      <p className="font-extralight">
+                      <h4 className="text-sm h-8">Tecnologias:</h4>
+                      <p className="text-sm lg:text-xs font-extralight">
                         {item.projectTechs
                           .map(({ tech }) => tech.name)
                           .join(" | ")}

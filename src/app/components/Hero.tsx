@@ -4,14 +4,14 @@ export default function Hero() {
       className="container mx-auto h-screen pt-[88px] flex items-center justify-center"
       id="home"
     >
-      <div className="flex flex-col items-center justify-center gap-8 h-2/4 sm:h-1/2 lg:h-2/3  border border-foreground px-8 lg:w-full">
-        <h1 className="text-4xl sm:text-6xl lg:text-8xl xl:text-9xl font-semibold">
+      <div className="flex flex-col items-center justify-center gap-8 h-2/4 sm:h-1/2 lg:h-2/3 xl:h-5/6 2xl:h-3/4  border border-foreground px-8 lg:w-full">
+        <h1 className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl font-semibold">
           VITOR OLIVEIRA
         </h1>
-        <h2 className="text-3xl sm:text-6xl lg:text-7xl xl:text-8xl font-[100] tracking-widest">
+        <h2 className="text-3xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-[100] tracking-widest">
           PORTFÓLIO
         </h2>
-        <p className="text-sm sm:text-lg lg:text-xl xl:text-2xl font-light">
+        <p className="text-sm sm:text-lg lg:text-xl 2xl:text-2xl font-light">
           Desenvolvedor Frontend
         </p>
         <div>
