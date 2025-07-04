@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    localStorage.getItem("theme") === "dark"
+      ? setTheme("dark")
+      : setTheme("light");
+  }, []);
 
   const menu = [
     { label: "Home", href: "/#home" },
@@ -18,7 +26,12 @@ export default function Header() {
     <header className="border-b border-gray-medium py-4 fixed top-0 left-0 right-0 bg-background z-50">
       <div className="container mx-auto flex items-center justify-between px-4 lg:px-0">
         <Link href="/">
-          <Image src="/logo-white.svg" alt="Logo" width={40} height={40} />
+          <Image
+            src={theme === "light" ? "/logo-black.svg" : "/logo-white.svg"}
+            alt="Logo"
+            width={40}
+            height={40}
+          />
         </Link>
 
         {/* Menu Desktop */}
@@ -26,12 +39,15 @@ export default function Header() {
           <ul className="flex gap-12">
             {menu.map((item, idx) => (
               <li key={idx} className="group relative">
-                <Link href={item.href} className="text-white">
+                <Link href={item.href} className="text-foreground">
                   {item.label}
-                  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-foreground transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               </li>
             ))}
+            <li>
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
 
@@ -50,7 +66,7 @@ export default function Header() {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <ul className="flex flex-col gap-8 text-white text-2xl">
+        <ul className="flex flex-col gap-8 text-foreground text-2xl">
           {menu.map((item, idx) => (
             <li key={idx}>
               <Link href={item.href} onClick={() => setIsOpen(false)}>
@@ -58,6 +74,9 @@ export default function Header() {
               </Link>
             </li>
           ))}
+          <li className="flex justify-center">
+            <ThemeToggle />
+          </li>
         </ul>
       </nav>
     </header>

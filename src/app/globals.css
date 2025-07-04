@@ -16,11 +16,9 @@
   --color-white-overlay: var(--white-overlay);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #efefef;
-    --foreground: #0f0f0f;
-  }
+[data-theme="light"] {
+  --background: #efefef;
+  --foreground: #0f0f0f;
 }
 
 html {
