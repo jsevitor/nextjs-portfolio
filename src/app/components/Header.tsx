@@ -10,9 +10,12 @@ export default function Header() {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    localStorage.getItem("theme") === "dark"
-      ? setTheme("dark")
-      : setTheme("light");
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   }, []);
 
   const menu = [
