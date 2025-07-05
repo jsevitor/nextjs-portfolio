@@ -1,10 +1,10 @@
 export default function Hero() {
   return (
     <div
-      className="container mx-auto h-screen pt-[88px] flex items-center justify-center"
+      className="container mx-auto h-screen pt-[64px] md:pt-[88px] flex items-center justify-center"
       id="home"
     >
-      <div className="flex flex-col items-center justify-center gap-8 h-2/4 sm:h-1/2 lg:h-2/3 xl:h-5/6 2xl:h-3/4  border border-foreground px-8 lg:w-full">
+      <div className="flex flex-col items-center justify-center gap-4 md:gap-6 h-2/4 md:h-2/3 xl:h-5/6 2xl:h-3/4 border border-foreground p-8 lg:w-full">
         <h1 className="text-4xl sm:text-6xl lg:text-8xl 2xl:text-9xl font-semibold">
           VITOR OLIVEIRA
         </h1>

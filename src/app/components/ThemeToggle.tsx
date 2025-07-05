@@ -5,8 +5,12 @@ export default function ThemeToggle() {
 
   const handleThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
+    const logo = newTheme === "light" ? "/logo-black.svg" : "/logo-white.svg";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
+    localStorage.setItem("logo", logo);
+
+    window.dispatchEvent(new Event("themeChange"));
   };
 
   useEffect(() => {
@@ -40,6 +44,7 @@ export default function ThemeToggle() {
           className={
             theme === "light" ? "bi bi-moon-stars-fill" : "bi bi-sun-fill"
           }
+          title={theme === "light" ? "Dark Mode" : "Light Mode"}
         ></i>
       </span>
     </div>

@@ -1,22 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import Logo from "./Logo";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  }, []);
 
   const menu = [
     { label: "Home", href: "/#home" },
@@ -29,12 +19,7 @@ export default function Header() {
     <header className="border-b border-gray-medium py-4 fixed top-0 left-0 right-0 bg-background z-50">
       <div className="container mx-auto flex items-center justify-between px-4 lg:px-0">
         <Link href="/">
-          <Image
-            src={theme === "light" ? "/logo-black.svg" : "/logo-white.svg"}
-            alt="Logo"
-            width={40}
-            height={40}
-          />
+          <Logo />
         </Link>
 
         {/* Menu Desktop */}
@@ -56,7 +41,7 @@ export default function Header() {
 
         {/* Botão hamburguer */}
         <button
-          className="md:hidden text-white text-3xl z-[60]"
+          className="md:hidden text-foreground text-3xl z-[60]"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <i className="bi bi-x-lg" /> : <i className="bi bi-list" />}
