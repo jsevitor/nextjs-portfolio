@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AboutSkeleton, StacksSkeleton } from "./Skeletons";
+import API_URL from "@/lib/apiConfig";
 
 interface About {
   id: string;
@@ -25,7 +26,7 @@ export default function About() {
 
   const fetchAbout = async () => {
     try {
-      const res = await fetch("https://dashfolio.netlify.app/api/about");
+      const res = await fetch(`${API_URL}/api/about`);
       if (!res.ok) throw new Error("Erro ao buscar abouts");
       const data = await res.json();
       setAboutData(data);
@@ -38,7 +39,7 @@ export default function About() {
 
   const fetchStacks = async () => {
     try {
-      const res = await fetch("https://dashfolio.netlify.app/api/stacks");
+      const res = await fetch(`${API_URL}/api/stacks`);
       if (!res.ok) throw new Error("Erro ao buscar stacks");
       const data = await res.json();
       setStacks(data);

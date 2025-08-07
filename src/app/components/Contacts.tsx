@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import API_URL from "@/lib/apiConfig";
 
 interface Contact {
   id: string;
@@ -15,7 +16,7 @@ export default function Contacts() {
 
   const fetchContacts = async () => {
     try {
-      const res = await fetch("https://dashfolio.netlify.app/api/contacts");
+      const res = await fetch(`${API_URL}/api/contacts`);
       if (!res.ok) throw new Error("Erro ao buscar projetos");
       const data = await res.json();
       setContacts(data);

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ProjectSkeleton } from "@/app/components/Skeletons";
 import { useEffect, useState } from "react";
 import { ButtonBlack, ButtonWhite } from "@/app/components/Buttons";
+import API_URL from "@/lib/apiConfig";
 
 interface Project {
   id: string;
@@ -26,10 +27,11 @@ export default function ProjectsPage() {
 
   const fetchProjects = async () => {
     try {
-      const res = await fetch("https://dashfolio.netlify.app/api/projects");
+      const res = await fetch(`${API_URL}/api/projects`);
       if (!res.ok) throw new Error("Erro ao buscar projetos");
       const data = await res.json();
       setProjects(data);
+      console.log(data);
     } catch (error) {
       console.error("Erro:", error);
     } finally {
