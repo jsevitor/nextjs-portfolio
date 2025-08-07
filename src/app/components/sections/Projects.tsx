@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ButtonBlack, ButtonWhite } from "./Buttons";
-import { ProjectCardSkeleton } from "./Skeletons";
+import { ButtonBlack, ButtonWhite } from "@/app/components/common/Buttons";
+import { ProjectCardSkeleton } from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
 
 interface Project {

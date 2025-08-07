@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { AboutSkeleton, StacksSkeleton } from "./Skeletons";
+import {
+  AboutSkeleton,
+  StacksSkeleton,
+} from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
 
 interface About {

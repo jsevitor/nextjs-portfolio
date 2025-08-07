@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { ProjectSkeleton } from "@/app/components/Skeletons";
+import { ProjectSkeleton } from "@/app/components/feedback/Skeletons";
 import { useEffect, useState } from "react";
-import { ButtonBlack, ButtonWhite } from "@/app/components/Buttons";
+import { ButtonBlack, ButtonWhite } from "@/app/components/common/Buttons";
 import API_URL from "@/lib/apiConfig";
 
 interface Project {

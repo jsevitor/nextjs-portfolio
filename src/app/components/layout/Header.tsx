@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../common/ThemeToggle";
 import Logo from "./Logo";
 
 export default function Header() {
