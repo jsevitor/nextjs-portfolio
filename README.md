@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio Pessoal
 
-## Getting Started
+Este é um projeto de portfólio pessoal desenvolvido para apresentar de forma clara, moderna e responsiva os principais projetos, experiências e habilidades de desenvolvimento. O foco do portfólio está na simplicidade e eficiência: o visitante consegue navegar facilmente entre as seções e visualizar os projetos em modais interativos, sem recarregar ou sair da página principal. Isso proporciona uma experiência mais fluida, intuitiva e agradável. Além disso, o projeto foi construído com as versões mais recentes das principais bibliotecas do ecossistema React, com atenção à acessibilidade e boas práticas de desenvolvimento.
 
-First, run the development server:
+## Preview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Acesse o projeto em: https://vitoroliveiraportfolio.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<img width="1905" height="914" alt="image" src="https://github.com/user-attachments/assets/5b082d9b-51ed-4241-93ed-6d9afa3b42e5" />
+<img width="1903" height="917" alt="image" src="https://github.com/user-attachments/assets/ba2c5934-c653-4a4f-aa9d-01ae66519046" />
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Funcionalidades
 
-## Learn More
+- Layout moderno e responsivo (mobile e desktop)
+- Exibição de projetos em modal interativo
+- Navegação leve com roteamento otimizado
+- Animações suaves e feedbacks visuais
+- Ícones com Bootstrap Icons
+- Componente Modal acessível com react-modal
 
-To learn more about Next.js, take a look at the following resources:
+## Tecnologias e Ferramentas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Stack               | Descrição                                                 |
+| ------------------- | --------------------------------------------------------- |
+| **Next.js 15**      | Framework React com App Router e Server Actions           |
+| **React 19**        | Biblioteca base para componentes interativos              |
+| **TailwindCSS 4**   | Framework utilitário para estilização responsiva          |
+| **React Modal**     | Modal acessível e responsivo para interações pontuais     |
+| **Bootstrap Icons** | Conjunto de ícones vetoriais modernos                     |
+| **TypeScript**      | Tipagem estática para maior segurança no código           |
+| **ESLint**          | Linter para manter a qualidade e consistência do código   |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Instalação
 
-## Deploy on Vercel
+- Clone o repositório
+  ```bash
+  git clone https://github.com/jsevitor/nextjs-dashboard-portfolio.git
+  ```
+- Acesse a pasta do projeto
+  ```bash
+  cd nextjs-portfolio
+  ```
+- Instale as dependências
+  ```bash
+  npm install
+  ```
+- Rode localmente
+  ```bash
+  npm run dev
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Aprendizados
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Durante o desenvolvimento deste portfólio, aprofundei conhecimentos em:
+
+- Componentização e reutilização com React
+- Estilização moderna e responsiva com TailwindCSS
+- Acessibilidade com modais e navegação por teclado
+- Boas práticas de organização de projeto com TypeScript
+- Deploy em ambiente serverless com Vercel
+
+## Documentação
+
+A documentação completa do projeto foi gerada com [TypeDoc](https://typedoc.org/) e está disponível em:
+
+🔗 [Documentação Técnica (GitHub Pages)](https://jsevitor.github.io/restaurant-menu-challenge/)
+
+Ela inclui descrições de tipos, estruturas, funções e lógica central do projeto — útil para entendimento rápido da base de código.
+
+## Contribuição
+
+Este é um projeto pessoal, mas sugestões e feedbacks são sempre bem-vindos!
+
+## Licença
+
+Este projeto está licenciado apenas para fins de portfólio pessoal.
+
+## Contato
+
+Caso queira entrar em contato, me encontre em:
+
+- LinkedIn: [linkedin.com/in/josevitoroliveira](https://linkedin.com/in/josevitoroliveira)
+- E-mail: [vitorjseo@gmail.com](mailto:vitorjseo@gmail.com)
+
+---
+
+Desenvolvido por **Vitor Oliveira**.
