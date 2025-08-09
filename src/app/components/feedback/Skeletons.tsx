@@ -6,11 +6,6 @@ function ProjectSkeleton() {
         <div className="h-6 bg-gray-medium rounded w-3/4" />
         <div className="h-4 bg-gray-medium rounded w-full" />
         <div className="h-4 bg-gray-medium rounded w-2/3" />
-        <div className="h-4 bg-gray-medium rounded w-1/2 mt-2" />
-        <div className="flex gap-4 mt-4">
-          <div className="h-10 w-24 bg-gray-medium rounded" />
-          <div className="h-10 w-32 bg-gray-medium rounded" />
-        </div>
       </div>
     </div>
   );

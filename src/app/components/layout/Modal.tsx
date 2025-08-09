@@ -20,7 +20,6 @@ export function Modal({
   onClose,
   title,
   description,
-  image,
   demoUrl,
   repoUrl,
   techs,
