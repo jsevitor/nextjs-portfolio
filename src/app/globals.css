@@ -1,11 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0f0f;
-  --foreground: #efefef;
   --gray-medium: #919191;
   --black-transparent: #0f0f0fea;
   --white-overlay: #efefef5e;
+
+  --color-black: #191919;
+  --color-dark: #181818;
+  --color-dark-gray: #363636;
+  --color-gray: #929292;
+  --color-light-gray: #dbdad6;
+  --color-accent-green: #4cd681;
+
+  --background: #dbdad6;
+  --foreground: #181818;
 }
 
 @theme inline {
@@ -14,12 +22,23 @@
   --color-gray-medium: var(--gray-medium);
   --color-black-transparent: var(--black-transparent);
   --color-white-overlay: var(--white-overlay);
+
+  --color-black: var(--color-black);
+  --color-dark: var(--color-dark);
+  --color-dark-gray: var(--color-dark-gray);
+  --color-gray: var(--color-gray);
+  --color-light-gray: var(--color-light-gray);
+  --color-accent-green: var(--color-accent-green);
+
+  --font-lexend: var(--lexend);
+  --font-redhat-display: var(--redhat-display);
+  --font-redhat-text: var(--redhat-text);
 }
 
-[data-theme="light"] {
+/* [data-theme="dark"] {
   --background: #efefef;
   --foreground: #0f0f0f;
-}
+} */
 
 html {
   scroll-behavior: smooth;
