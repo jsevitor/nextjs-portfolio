@@ -61,7 +61,7 @@ export default function About() {
 
   return (
     <section
-      className="border border-gray rounded-4xl py-[64px] md:mt-[88px] shadow bg-[#cacac8]"
+      className="border border-gray rounded-4xl py-16 md:mt-[88px] shadow bg-[#cacac8]"
       id="about"
     >
       <div className="container mx-auto px-4 ">
