@@ -4,14 +4,17 @@ type ButtonProps = {
   className?: string;
 };
 
-export function Button({ url, label, className }: ButtonProps) {
+export function ButtonTalkToMe({ className }: ButtonProps) {
   return (
     <button
       type="submit"
-      className={`px-4 py-1 bg-foreground text-background rounded hover:bg-gray-medium hover:text-foreground border border-foreground cursor-pointer ${className}`}
+      className={`px-8 py-2 rounded-full bg-accent-green border border-dark transition-all duration-300 hover:scale-102 ${className}`}
     >
-      <a href={url} target="_blank">
-        {label}
+      <a
+        href={"https://www.linkedin.com/in/josevitoroliveira/"}
+        target="_blank"
+      >
+        Fale comigo
       </a>
     </button>
   );

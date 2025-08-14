@@ -6,6 +6,7 @@ import ThemeToggle from "../common/ThemeToggle";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import { it } from "node:test";
+import { ButtonTalkToMe } from "../common/Buttons";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function Header() {
     <header className="border-b border-gray py-2 fixed top-0 left-0 right-0 bg-background z-50 font-redhat-display">
       <div className="container mx-auto flex items-center justify-between px-4 lg:px-0">
         <Link href="/">
-          <h1 className="text-5xl font-bold">vitor</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold">vitor</h1>
         </Link>
 
         {/* Menu Desktop */}
@@ -57,16 +58,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <button
-          className={`hidden lg:block px-8 py-2 rounded-full bg-accent-green border border-accent-green hover:border-dark transition-all duration-300 hover:scale-102`}
-        >
-          <a
-            href={"https://www.linkedin.com/in/josevitoroliveira/"}
-            target="_blank"
-          >
-            Fale comigo
-          </a>
-        </button>
+        <ButtonTalkToMe className="hidden lg:block" />
 
         {/* Botão hamburguer */}
         <button
@@ -88,7 +80,7 @@ export default function Header() {
             <li key={idx}>
               <Link href={item.href} onClick={() => setIsOpen(false)}>
                 <div className="flex items-center gap-8 border-b">
-                  <span className="text-6xl font-thin">0{idx + 1}</span>
+                  <span className="text-6xl font-extrabold">0{idx + 1}</span>
                   <span className="font-medium">{item.label}</span>
                 </div>
               </Link>
