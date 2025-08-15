@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ButtonTalkToMe } from "../common/Buttons";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const pathname = usePathname();
+  const router = useRouter();
 
   const menu = [
     { label: "Home", href: "/#home" },
@@ -35,7 +36,7 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // para já marcar ao carregar
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -56,6 +57,12 @@ export default function Header() {
   };
 
   const handleClick = (href: string) => {
+    if (pathname !== "/") {
+      router.push(href);
+      setIsOpen(false);
+      return;
+    }
+
     const el = document.querySelector(href.replace("/#", "#"));
     if (el instanceof HTMLElement) {
       window.scrollTo({
