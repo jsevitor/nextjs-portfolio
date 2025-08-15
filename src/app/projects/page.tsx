@@ -5,6 +5,7 @@ import { ProjectSkeleton } from "@/app/components/feedback/Skeletons";
 import { useEffect, useState } from "react";
 import API_URL from "@/lib/apiConfig";
 import { Modal } from "../components/layout/Modal";
+import { COLORS } from "@/utils/colors";
 
 interface Project {
   id: string;
@@ -50,47 +51,61 @@ export default function ProjectsPage() {
   }, []);
 
   return (
-    <div
-      className="container mx-auto px-4 my-16 md:px-0 pt-[88px]"
-      id="projects"
-    >
+    <div className="container mx-auto px-4 mb-8 pt-[88px]" id="projects">
       <div className="flex flex-col gap-8 pb-8">
-        <div className="border-l-2 border-foreground pl-8 mb-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[100] py-2">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-6xl lg:text-8xl text-center font-extrabold py-2">
             PROJETOS
           </h1>
+          <div className="text-center text-dark-gray lg:w-2/3 mx-auto text-sm">
+            <p className="text-lg font-bold">Bem-vindo ao meu portfólio! </p>
+            <p>
+              Aqui você encontra uma coleção de projetos pessoais e acadêmicos
+              que desenvolvi ao longo da minha trajetória. Cada trabalho reflete
+              meu aprendizado, criatividade e paixão por tecnologia, abrangendo
+              diferentes áreas e desafios do desenvolvimento web.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 ">
           {loading
             ? Array.from({ length: 6 }).map((_, idx) => (
                 <ProjectSkeleton key={idx} />
               ))
-            : projects.map((item) => (
+            : projects.map((item, idx) => (
                 <div
                   key={item.id}
-                  className="flex flex-col gap-4 cursor-pointer hover:opacity-70 scale-100 hover:scale-105 transition-all duration-300 ease-in-out pb-2 border border-gray-medium shadow shadow-gray-medium"
-                  onClick={() => {
-                    setTitle(item.title);
-                    setDescription(item.description);
-                    setImage(item.image);
-                    setDemoUrl(item.demoUrl);
-                    setRepoUrl(item.repoUrl);
-                    setTechs(item.projectTechs.map(({ tech }) => tech.name));
-                    setModalIsOpen(true);
-                  }}
+                  className="flex flex-col gap-4 shadow rounded-2xl overflow-hidden border border-gray p-4"
                 >
-                  <div className="shrink-0 border-b border-gray-medium">
+                  <div
+                    className="shrink-0 rounded-xl overflow-hidden cursor-pointer hover:opacity-70 scale-100 hover:scale-105 transition-all duration-300 ease-in-out"
+                    style={{ backgroundColor: COLORS[idx % COLORS.length] }}
+                    onClick={() => {
+                      setTitle(item.title);
+                      setDescription(item.description);
+                      setImage(item.image);
+                      setDemoUrl(item.demoUrl);
+                      setRepoUrl(item.repoUrl);
+                      setTechs(item.projectTechs.map(({ tech }) => tech.name));
+                      setModalIsOpen(true);
+                    }}
+                  >
                     <Image
                       src={item.image}
                       alt={item.title}
                       width={520}
                       height={300}
                     />
-                  </div>
-                  <div className="flex flex-col justify-center gap-4 px-2">
-                    <div className="flex flex-col gap-2">
-                      <h3 className="">{item.title}</h3>
+                    <div className="flex flex-col justify-center gap-4 px-2 text-white overflow-hidden">
+                      <div
+                        className="flex flex-col gap-2 font-extrabold overflow-hidden py-2 px-2
+                      "
+                      >
+                        <h3 className="whitespace-nowrap overflow-hidden text-ellipsis text-lg">
+                          {item.title}
+                        </h3>
+                      </div>
                     </div>
                   </div>
                 </div>
