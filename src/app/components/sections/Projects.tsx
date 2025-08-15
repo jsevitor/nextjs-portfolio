@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ButtonGreen, ButtonWhite } from "@/app/components/common/Buttons";
+import { ButtonPrimary } from "@/app/components/common/Buttons";
 import { ProjectCardSkeleton } from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
 import { Modal } from "../layout/Modal";
@@ -133,10 +133,10 @@ export default function Projects() {
             techs={techs}
           />
           <div className="flex justify-center ">
-            <ButtonGreen url="/projects" className="mt-4">
+            <ButtonPrimary url="/projects" className="mt-4">
               {" "}
               Ver todos os projetos
-            </ButtonGreen>
+            </ButtonPrimary>
           </div>
         </div>
       </div>

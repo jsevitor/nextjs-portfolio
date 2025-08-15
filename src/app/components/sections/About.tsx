@@ -7,7 +7,7 @@ import {
   StacksSkeleton,
 } from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
-import { ButtonGreen } from "../common/Buttons";
+import { ButtonPrimary } from "../common/Buttons";
 
 interface About {
   id: string;
@@ -95,12 +95,15 @@ export default function About() {
                   </div>
                   <p className="text-lg/8 ">{item.content}</p>
                   <div className="flex justify-center lg:justify-start">
-                    <ButtonGreen url={item.curriculum} className="shadow mt-4">
+                    <ButtonPrimary
+                      url={item.curriculum}
+                      className="shadow mt-4"
+                    >
                       <span className="flex items-center gap-2">
                         <p className="font-medium">Currículo</p>
                         <i className="bi bi-arrow-down-circle"></i>
                       </span>
-                    </ButtonGreen>
+                    </ButtonPrimary>
                   </div>
                 </div>
               </div>

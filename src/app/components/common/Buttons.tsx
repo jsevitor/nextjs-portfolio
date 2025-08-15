@@ -21,7 +21,7 @@ export function ButtonTalkToMe({ className }: ButtonProps) {
   );
 }
 
-export function ButtonGreen({ url, children, className }: ButtonProps) {
+export function ButtonPrimary({ url, children, className }: ButtonProps) {
   return (
     <button
       type="submit"
@@ -33,27 +33,14 @@ export function ButtonGreen({ url, children, className }: ButtonProps) {
     </button>
   );
 }
-
-export function ButtonWhite({ url, label, className }: ButtonProps) {
+export function ButtonSecondary({ url, children, className }: ButtonProps) {
   return (
     <button
       type="submit"
-      className={`px-4 py-1 bg-foreground text-background rounded hover:bg-gray-medium hover:text-foreground border border-foreground cursor-pointer ${className}`}
+      className={`px-8 py-2 bg-dark text-background rounded-full border border-dark hover:bg-gray hover:text-foreground transition-all duration-300 hover:scale-105 ${className}`}
     >
       <a href={url} target="_blank">
-        {label}
-      </a>
-    </button>
-  );
-}
-
-export function ButtonBlack({ url, label, className }: ButtonProps) {
-  return (
-    <button
-      className={`px-4 py-1 bg-background text-foreground rounded hover:bg-gray-medium hover:text-background border border-foreground cursor-pointer ${className}`}
-    >
-      <a href={url} target="_blank">
-        {label}
+        {children}
       </a>
     </button>
   );
