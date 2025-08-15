@@ -25,17 +25,17 @@ export default function Hero() {
             <p>Trabalho com Next.js, React, Tailwind e Prisma.</p>
           </div>
           <div className="flex gap-4 mt-4 text-2xl text-gray">
-            <button className="h-10 w-10 border flex items-center justify-center rounded-full bg-accent-green text-dark hover:shadow shadow-gray scale-100 hover:scale-105 hover:animate-bounce">
+            <button className="h-10 w-10 border flex items-center justify-center rounded-full text-gray hover:bg-accent-green hover:text-dark hover:shadow shadow-gray scale-100 hover:scale-105 hover:animate-bounce">
               <a href="https://github.com/jsevitor" target="_blank">
                 <i className="bi bi-github"></i>
               </a>
             </button>
-            <button className="h-10 w-10 border flex items-center justify-center rounded-full bg-accent-green text-dark hover:shadow shadow-gray scale-100 hover:scale-105 hover:animate-bounce">
+            <button className="h-10 w-10 border flex items-center justify-center rounded-full text-gray hover:bg-accent-green hover:text-dark hover:shadow shadow-gray scale-100 hover:scale-105 hover:animate-bounce">
               <a href="" target="_blank">
                 <i className="bi bi-linkedin"></i>
               </a>
             </button>
-            <button className="h-10 w-10 border flex items-center justify-center rounded-full bg-accent-green text-dark hover:shadow shadow-gray scale-100 hover:scale-105 hover:animate-bounce">
+            <button className="h-10 w-10 border flex items-center justify-center rounded-full text-gray hover:bg-accent-green hover:text-dark hover:shadow shadow-gray scale-100 hover:scale-105 hover:animate-bounce">
               <a href="" target="_blank">
                 <i className="bi bi-instagram"></i>
               </a>

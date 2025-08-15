@@ -53,7 +53,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="py-16" id="projects">
+    <section className="" id="projects">
       <div className="container mx-auto px-4">
         <div className="flex flex-col gap-8 py-8">
           <div>
