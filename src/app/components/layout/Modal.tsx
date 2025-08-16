@@ -59,7 +59,7 @@ export function Modal({
             </h4>
 
             <div className="flex flex-col items-center">
-              <p className="grid grid-cols-2 lg:grid-cols-3 gap-2 text-sm border border-gray py-4 px-2 bg-[#cacac8] rounded-2xl">
+              <p className="grid grid-cols-2 lg:grid-cols-3 gap-2 text-sm border border-gray py-4 px-2 bg-[#cacac8] rounded-2xl w-full">
                 {techs.map((tech, idx) => (
                   <span
                     key={idx}

@@ -133,7 +133,7 @@ export default function Projects() {
             techs={techs}
           />
           <div className="flex justify-center ">
-            <ButtonPrimary url="/projects" className="mt-4">
+            <ButtonPrimary url="/projects" className="mt-4 font-bold">
               {" "}
               Ver todos os projetos
             </ButtonPrimary>

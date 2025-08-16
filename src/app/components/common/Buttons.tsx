@@ -15,7 +15,7 @@ export function ButtonTalkToMe({ className }: ButtonProps) {
         href={"https://www.linkedin.com/in/josevitoroliveira/"}
         target="_blank"
       >
-        Fale comigo
+        <p className="font-bold">Fale comigo</p>
       </a>
     </button>
   );
