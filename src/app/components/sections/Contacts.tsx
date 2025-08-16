@@ -62,9 +62,11 @@ export default function Contacts() {
                 .slice()
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((item) => (
-                  <button className="h-24 w-24 rounded-2xl hover:border border-dark hover:scale-105 hover:bg-accent-green hover:text-dark hover:shadow transition-all duration-300">
+                  <button
+                    className="h-24 w-24 rounded-2xl hover:border border-dark hover:scale-105 hover:bg-accent-green hover:text-dark hover:shadow transition-all duration-300"
+                    key={item.id}
+                  >
                     <a
-                      key={item.id}
                       href={item.link}
                       className="flex flex-col items-center gap-2"
                     >

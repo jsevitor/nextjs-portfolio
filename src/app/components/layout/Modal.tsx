@@ -76,7 +76,7 @@ export function Modal({
               {" "}
               Demo{" "}
             </ButtonPrimary>
-            <ButtonSecondary url={demoUrl} className="w-full md:w-1/3">
+            <ButtonSecondary url={repoUrl} className="w-full md:w-1/3">
               {" "}
               Repositório{" "}
             </ButtonSecondary>

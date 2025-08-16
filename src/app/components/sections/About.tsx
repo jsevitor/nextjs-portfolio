@@ -8,12 +8,14 @@ import {
 } from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
 import { ButtonPrimary } from "../common/Buttons";
-import { url } from "inspector";
 
 interface About {
   id: string;
-  location: string;
-  content: string;
+  card1: string;
+  card2: string;
+  card3: string;
+  card4: string;
+  card5: string;
   image: string;
   curriculum: string;
 }
@@ -28,6 +30,7 @@ export default function About() {
   const [aboutData, setAboutData] = useState<About[]>([]);
   const [stacks, setStacks] = useState<Stack[]>([]);
   const [loading, setLoading] = useState(true);
+  const [totalProjects, setTotalProjects] = useState<number | null>(null);
 
   const fetchAbout = async () => {
     try {
@@ -39,6 +42,18 @@ export default function About() {
       console.error("Erro:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchProjectSummary = async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/projects/summary`);
+      if (!res.ok) throw new Error("Erro ao buscar projetos");
+      const data = await res.json();
+      console.log(data.total);
+      setTotalProjects(data.total);
+    } catch (error) {
+      console.error("Erro:", error);
     }
   };
 
@@ -58,6 +73,7 @@ export default function About() {
   useEffect(() => {
     fetchAbout();
     fetchStacks();
+    fetchProjectSummary();
   }, []);
 
   return (
@@ -80,32 +96,47 @@ export default function About() {
                 key={item.id}
                 className="grid grid-cols-1 lg:grid-cols-3 gap-4 rounded-2xl"
               >
-                <div className="flex flex-col gap-4 justify-between ">
+                {/* Card 1 */}
+                <div className="flex flex-col gap-4 ">
                   <p className="border border-gray h-fit p-4 rounded-2xl">
-                    Sou um desenvolvedor frontend apaixonado por transformar
-                    ideias em interfaces funcionais e bonitas. Minha missão é
-                    unir design e tecnologia para criar experiências digitais
-                    fluidas, responsivas e acessíveis. Sempre aberto a novos
-                    desafios e pronto para colaborar em projetos que façam a
-                    diferença.
+                    {item.card1}
                   </p>
-                </div>
-                <div className="flex flex-col-reverse lg:flex-col justify-between gap-4 p-4 shadow rounded-2xl bg-background">
-                  <div className="flex items-center justify-center h-12 w-12 bg-accent-green text-foreground rounded-full lg:text-3xl border border-foreground shrink-0">
-                    <i className="bi bi-globe-americas-fill"></i>
+                  <div className="hidden lg:flex justify-center items-center h-full">
+                    <Image
+                      src={"/assets/dev.png"}
+                      alt="Ilustração de desenvolvedor"
+                      width={300}
+                      height={400}
+                      className="w-60 object-cover object-top"
+                    />
                   </div>
-                  <p className="">
-                    <span className="font-bold text-2xl">100% </span> Dedicação
-                    para entregar interfaces limpas, responsivas e intuitivas
-                  </p>
+                </div>
+
+                {/* Card 2 */}
+                <div className="flex flex-col-reverse lg:flex-col justify-between gap-8 p-4 shadow rounded-2xl bg-background">
+                  <div className="flex flex-col gap-2 text-sm ">
+                    <div className="flex flex-col">
+                      <span className="font-bold text-xl">100% </span>
+                      <p>{item.card2}</p>
+                    </div>
+
+                    <div className="flex flex-col">
+                      <span className="font-bold text-xl">
+                        +{totalProjects}
+                      </span>
+                      <p>{item.card3}</p>
+                    </div>
+                  </div>
                   <Image
                     src={item.image}
                     alt="Foto de perfil"
                     width={300}
                     height={400}
-                    className="w-full h-72 object-cover object-top mx-auto border border-gray rounded-2xl shadow"
+                    className="w-full h-80 object-cover object-top mx-auto border border-gray rounded-2xl shadow"
                   />
                 </div>
+
+                {/* Card 3 */}
                 <div className="flex flex-col-reverse lg:flex-col justify-between gap-8 lg:gap-4">
                   <div className="flex justify-center items-end lg:items-center lg:h-full">
                     <ButtonPrimary
@@ -123,22 +154,13 @@ export default function About() {
                       <span className="flex items-center justify-center pt-0.5 h-8 w-8 bg-dark-gray rounded-full lg:text-xl text-background shrink-0">
                         <i className="bi bi-stars"></i>
                       </span>
-                      <p>
-                        Com experiência em HTML, CSS, JavaScript, React e
-                        Next.js, foco na criação de soluções web responsivas e
-                        otimizadas, aplicando boas práticas de UI/UX e
-                        metodologias ágeis.
-                      </p>
+                      <p>{item.card4}</p>
                     </div>
                     <div className="flex gap-4">
                       <span className="flex items-center justify-center pt-0.5 h-8 w-8 bg-dark-gray rounded-full lg:text-xl text-background shrink-0">
                         <i className="bi bi-stars"></i>
                       </span>
-                      <p>
-                        Estou sempre estudando novas tecnologias e tendências do
-                        desenvolvimento web, buscando evolução constante para
-                        oferecer resultados cada vez melhores.
-                      </p>
+                      <p>{item.card5}</p>
                     </div>
                   </div>
                 </div>
