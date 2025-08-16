@@ -8,6 +8,7 @@ import {
 } from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
 import { ButtonPrimary } from "../common/Buttons";
+import { url } from "inspector";
 
 interface About {
   id: string;
@@ -77,33 +78,68 @@ export default function About() {
             aboutData.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col lg:flex-row justify-center gap-8 pb-8 lg:py-8 border border-gray shadow rounded-2xl"
+                className="grid grid-cols-1 lg:grid-cols-3 gap-4 rounded-2xl"
               >
-                <div className="shrink-0 flex justify-center rounded-2xl shadow">
+                <div className="flex flex-col gap-4 justify-between ">
+                  <p className="border border-gray h-fit p-4 rounded-2xl">
+                    Sou um desenvolvedor frontend apaixonado por transformar
+                    ideias em interfaces funcionais e bonitas. Minha missão é
+                    unir design e tecnologia para criar experiências digitais
+                    fluidas, responsivas e acessíveis. Sempre aberto a novos
+                    desafios e pronto para colaborar em projetos que façam a
+                    diferença.
+                  </p>
+                </div>
+                <div className="flex flex-col-reverse lg:flex-col justify-between gap-4 p-4 shadow rounded-2xl bg-background">
+                  <div className="flex items-center justify-center h-12 w-12 bg-accent-green text-foreground rounded-full lg:text-3xl border border-foreground shrink-0">
+                    <i className="bi bi-globe-americas-fill"></i>
+                  </div>
+                  <p className="">
+                    <span className="font-bold text-2xl">100% </span> Dedicação
+                    para entregar interfaces limpas, responsivas e intuitivas
+                  </p>
                   <Image
                     src={item.image}
                     alt="Foto de perfil"
-                    width={420}
+                    width={300}
                     height={400}
-                    className="border border-gray rounded-2xl"
+                    className="w-full h-72 object-cover object-top mx-auto border border-gray rounded-2xl shadow"
                   />
                 </div>
-                <div className="flex flex-col justify-center gap-4 p-2 lg:ml-8 lg:w-1/2">
-                  <div className="flex items-center gap-2">
-                    <i className="bi bi-geo-alt-fill"></i>
-                    <h3>{item.location}</h3>
-                  </div>
-                  <p className="text-lg/8 ">{item.content}</p>
-                  <div className="flex justify-center lg:justify-start">
+                <div className="flex flex-col-reverse lg:flex-col justify-between gap-8 lg:gap-4">
+                  <div className="flex justify-center items-end lg:items-center lg:h-full">
                     <ButtonPrimary
                       url={item.curriculum}
-                      className="shadow mt-4"
+                      className="shadow flex justify-center"
                     >
                       <span className="flex items-center gap-2">
-                        <p className="font-medium">Currículo</p>
+                        <p className="font-bold">Baixar Currículo</p>
                         <i className="bi bi-arrow-down-circle"></i>
                       </span>
                     </ButtonPrimary>
+                  </div>
+                  <div className="flex flex-col gap-8 border border-gray rounded-2xl p-4">
+                    <div className="flex gap-4">
+                      <span className="flex items-center justify-center pt-0.5 h-8 w-8 bg-dark-gray rounded-full lg:text-xl text-background shrink-0">
+                        <i className="bi bi-stars"></i>
+                      </span>
+                      <p>
+                        Com experiência em HTML, CSS, JavaScript, React e
+                        Next.js, foco na criação de soluções web responsivas e
+                        otimizadas, aplicando boas práticas de UI/UX e
+                        metodologias ágeis.
+                      </p>
+                    </div>
+                    <div className="flex gap-4">
+                      <span className="flex items-center justify-center pt-0.5 h-8 w-8 bg-dark-gray rounded-full lg:text-xl text-background shrink-0">
+                        <i className="bi bi-stars"></i>
+                      </span>
+                      <p>
+                        Estou sempre estudando novas tecnologias e tendências do
+                        desenvolvimento web, buscando evolução constante para
+                        oferecer resultados cada vez melhores.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
