@@ -8,6 +8,7 @@ import {
 } from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
 import { ButtonPrimary } from "../common/Buttons";
+import Skills from "./Skills";
 
 interface About {
   id: string;
@@ -192,26 +193,7 @@ export default function About() {
               </div>
             ))
           )}
-          <div className="felx flex-col items-center justify-center text-dark my-8">
-            <h3 className="text-xl text-center font-extrabold mb-4">
-              HABILIDADES TÉCNICAS
-            </h3>
-            {loading ? (
-              <StacksSkeleton />
-            ) : (
-              <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2 lg:gap-4 text-sm   border-t border-b border-gray py-4 lg:px-8">
-                {stacks.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex flex-col items-center gap-2 p-4 rounded-xl bg-gray shadow"
-                  >
-                    <i className={`${item.icon} text-4xl lg:text-6xl`}></i>
-                    <p>{item.name}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <Skills />
         </div>
       </div>
     </section>
