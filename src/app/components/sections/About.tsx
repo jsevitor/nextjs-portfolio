@@ -16,6 +16,7 @@ interface About {
   card3: string;
   card4: string;
   card5: string;
+  card6: string;
   image: string;
   curriculum: string;
 }
@@ -76,6 +77,36 @@ export default function About() {
     fetchProjectSummary();
   }, []);
 
+  function HighlightedText({ text }: { text: string }) {
+    const keywords = [
+      "Front-End",
+      "Back-End",
+      "Full Stack",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Prisma",
+      "PostgreSQL",
+      "Análise e Desenvolvimento de Sistemas",
+    ];
+
+    return (
+      <p>
+        {text.split(" ").map((word, i) =>
+          keywords.some((k) => k.toLowerCase() === word.toLowerCase()) ? (
+            <span key={i} className="font-bold text-dark">
+              {word}{" "}
+            </span>
+          ) : (
+            word + " "
+          )
+        )}
+      </p>
+    );
+  }
+
   return (
     <section
       className="border border-gray rounded-4xl py-8 shadow bg-[#cacac8]"
@@ -94,50 +125,58 @@ export default function About() {
             aboutData.map((item) => (
               <div
                 key={item.id}
-                className="grid grid-cols-1 lg:grid-cols-3 gap-4 rounded-2xl"
+                className="grid grid-cols-1 lg:grid-cols-[1.5fr_2fr_1fr] gap-8 rounded-2xl 2xl:text-lg"
               >
-                {/* Card 1 */}
-                <div className="flex flex-col gap-4 ">
-                  <p className="border border-gray h-fit p-4 rounded-2xl">
-                    {item.card1}
-                  </p>
-                  <div className="hidden lg:flex justify-center items-center h-full">
-                    <Image
-                      src={"/assets/dev.png"}
-                      alt="Ilustração de desenvolvedor"
-                      width={300}
-                      height={400}
-                      className="w-60 object-cover object-top"
-                    />
-                  </div>
-                </div>
-
-                {/* Card 2 */}
-                <div className="flex flex-col-reverse lg:flex-col justify-between gap-8 p-4 shadow rounded-2xl bg-background">
-                  <div className="flex flex-col gap-2 text-sm ">
-                    <div className="flex flex-col">
-                      <span className="font-bold text-xl">100% </span>
-                      <p>{item.card2}</p>
-                    </div>
-
-                    <div className="flex flex-col">
-                      <span className="font-bold text-xl">
-                        +{totalProjects}
-                      </span>
-                      <p>{item.card3}</p>
-                    </div>
-                  </div>
+                {/* Card 1 - Photo */}
+                <div>
                   <Image
                     src={item.image}
                     alt="Foto de perfil"
                     width={300}
                     height={400}
-                    className="w-full h-80 object-cover object-top mx-auto border border-gray rounded-2xl shadow"
+                    className="w-full h-full object-cover object-top mx-auto border border-gray rounded-2xl shadow"
                   />
                 </div>
 
-                {/* Card 3 */}
-                <div className="flex flex-col-reverse lg:flex-col justify-between gap-8 lg:gap-4">
+                {/* Card 2 - Profile */}
+                <div className="flex flex-col justify-between gap-8 bg-background shadow rounded-2xl p-4 lg:py-4 lg:px-8">
+                  <div className="flex flex-col gap-4 font-medium ">
+                    <p>{item.card1}</p>
+                    <p>{item.card2}</p>
+                  </div>
+
+                  <div className="flex flex-col gap-4 lg:pb-4">
+                    <div className="flex gap-4">
+                      <span className="flex items-center justify-center pt-0.5 h-6 w-6 lg:h-8 lg:w-8 bg-dark-gray rounded-full lg:text-xl text-background shrink-0">
+                        <i className="bi bi-stars"></i>
+                      </span>
+                      <p>{item.card3}</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <span className="flex items-center justify-center pt-0.5 h-6 w-6 lg:h-8 lg:w-8 bg-dark-gray rounded-full lg:text-xl text-background shrink-0">
+                        <i className="bi bi-stars"></i>
+                      </span>
+                      <p>{item.card4}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3 - Stats */}
+                <div className="flex flex-col-reverse lg:flex-col justify-between gap-8">
+                  <div className="grid grid-rows-2 gap-8">
+                    <div className="flex flex-col border border-gray shadow rounded-2xl p-4">
+                      <span className="font-extrabold text-3xl ">100% </span>
+                      <p>{item.card5}</p>
+                    </div>
+
+                    <div className="flex flex-col border border-gray shadow rounded-2xl p-4">
+                      <span className="font-extrabold text-3xl">
+                        +{totalProjects}
+                      </span>
+                      <p>{item.card6}</p>
+                    </div>
+                  </div>
+
                   <div className="flex justify-center items-end lg:items-center lg:h-full">
                     <ButtonPrimary
                       url={item.curriculum}
@@ -148,20 +187,6 @@ export default function About() {
                         <i className="bi bi-arrow-down-circle"></i>
                       </span>
                     </ButtonPrimary>
-                  </div>
-                  <div className="flex flex-col gap-8 border border-gray rounded-2xl p-4">
-                    <div className="flex gap-4">
-                      <span className="flex items-center justify-center pt-0.5 h-8 w-8 bg-dark-gray rounded-full lg:text-xl text-background shrink-0">
-                        <i className="bi bi-stars"></i>
-                      </span>
-                      <p>{item.card4}</p>
-                    </div>
-                    <div className="flex gap-4">
-                      <span className="flex items-center justify-center pt-0.5 h-8 w-8 bg-dark-gray rounded-full lg:text-xl text-background shrink-0">
-                        <i className="bi bi-stars"></i>
-                      </span>
-                      <p>{item.card5}</p>
-                    </div>
                   </div>
                 </div>
               </div>
