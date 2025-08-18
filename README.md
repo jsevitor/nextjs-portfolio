@@ -8,8 +8,7 @@ Acesse o projeto em: https://vitoroliveiraportfolio.vercel.app/
 
 ## Screenshots
 
-<img width="1905" height="914" alt="image" src="https://github.com/user-attachments/assets/5b082d9b-51ed-4241-93ed-6d9afa3b42e5" />
-<img width="1903" height="917" alt="image" src="https://github.com/user-attachments/assets/ba2c5934-c653-4a4f-aa9d-01ae66519046" />
+<<img width="1902" height="916" alt="image" src="https://github.com/user-attachments/assets/75b9eba5-3a9e-432d-9661-22a554f6a4df" />
 
 ## Funcionalidades
 
