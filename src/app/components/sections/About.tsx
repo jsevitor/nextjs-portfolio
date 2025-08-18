@@ -19,12 +19,6 @@ interface About {
   curriculum: string;
 }
 
-interface Stack {
-  id: string;
-  icon: string;
-  name: string;
-}
-
 export default function About() {
   const [aboutData, setAboutData] = useState<About[]>([]);
   const [loading, setLoading] = useState(true);
