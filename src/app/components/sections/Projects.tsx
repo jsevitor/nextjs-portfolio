@@ -115,6 +115,13 @@ export default function Projects() {
                             ))}
                           </div>
                         </div>
+
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="text-white font-medium text-lg">
+                            Ver detalhes
+                          </span>
+                        </div>
                       </div>
                     </div>
                   ))}
