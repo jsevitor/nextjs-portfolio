@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import {
-  AboutSkeleton,
-  StacksSkeleton,
-} from "@/app/components/feedback/Skeletons";
+import { AboutSkeleton } from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
 import { ButtonPrimary } from "../common/Buttons";
 import Skills from "./Skills";
@@ -30,7 +27,6 @@ interface Stack {
 
 export default function About() {
   const [aboutData, setAboutData] = useState<About[]>([]);
-  const [stacks, setStacks] = useState<Stack[]>([]);
   const [loading, setLoading] = useState(true);
   const [totalProjects, setTotalProjects] = useState<number | null>(null);
 
@@ -59,54 +55,10 @@ export default function About() {
     }
   };
 
-  const fetchStacks = async () => {
-    try {
-      const res = await fetch(`${API_URL}/api/stacks`);
-      if (!res.ok) throw new Error("Erro ao buscar stacks");
-      const data = await res.json();
-      setStacks(data);
-    } catch (error) {
-      console.error("Erro:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
     fetchAbout();
-    fetchStacks();
     fetchProjectSummary();
   }, []);
-
-  function HighlightedText({ text }: { text: string }) {
-    const keywords = [
-      "Front-End",
-      "Back-End",
-      "Full Stack",
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Node.js",
-      "Prisma",
-      "PostgreSQL",
-      "Análise e Desenvolvimento de Sistemas",
-    ];
-
-    return (
-      <p>
-        {text.split(" ").map((word, i) =>
-          keywords.some((k) => k.toLowerCase() === word.toLowerCase()) ? (
-            <span key={i} className="font-bold text-dark">
-              {word}{" "}
-            </span>
-          ) : (
-            word + " "
-          )
-        )}
-      </p>
-    );
-  }
 
   return (
     <section
