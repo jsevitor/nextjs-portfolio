@@ -1,6 +1,7 @@
 import API_URL from "@/lib/apiConfig";
 import { useEffect, useState } from "react";
 import { StacksSkeleton } from "../feedback/Skeletons";
+import { motion } from "framer-motion";
 
 interface Stack {
   id: string;
@@ -30,24 +31,48 @@ export default function Skills() {
   }, []);
 
   return (
-    <section className="felx flex-col items-center justify-center text-dark my-8">
-      <h3 className="text-xl text-center font-extrabold mb-4">
+    <section className="flex flex-col items-center justify-center text-dark my-8">
+      <motion.h3
+        className="text-xl text-center font-extrabold mb-4"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
         HABILIDADES TÉCNICAS
-      </h3>
+      </motion.h3>
+
       {loading ? (
         <StacksSkeleton />
       ) : (
-        <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2 lg:gap-4 text-sm border-t border-b border-gray py-4 lg:px-8">
+        <motion.div
+          className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-2 lg:gap-4 text-sm border-t border-b border-gray py-4 lg:px-8 w-full"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
+        >
           {stacks.map((item) => (
-            <div
+            <motion.div
               key={item.id}
               className="flex flex-col items-center gap-2 p-4 rounded-xl bg-gray shadow hover:text-accent-green"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              whileHover={{ scale: 1.05, rotate: -2 }}
             >
               <i className={`${item.icon} text-4xl lg:text-6xl`}></i>
               <p>{item.name}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       )}
     </section>
   );

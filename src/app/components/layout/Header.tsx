@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ButtonTalkToMe } from "../common/Buttons";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,7 +94,13 @@ export default function Header() {
           </ul>
         </nav>
 
-        <ButtonTalkToMe className="hidden lg:block" />
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <ButtonTalkToMe className="hidden lg:block" />
+        </motion.button>
 
         {/* Botão hamburguer */}
         <button

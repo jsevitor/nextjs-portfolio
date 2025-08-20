@@ -1,8 +1,7 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import API_URL from "@/lib/apiConfig";
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
 
 interface Contact {
   id: string;
@@ -14,6 +13,9 @@ interface Contact {
 
 export default function Contacts() {
   const [contacts, setContacts] = useState<Contact[]>([]);
+
+  const aboutRef = useRef(null);
+  const isInView = useInView(aboutRef, { once: true, margin: "-100px" });
 
   const fetchContacts = async () => {
     try {
@@ -31,8 +33,20 @@ export default function Contacts() {
   }, []);
 
   return (
-    <section className="py-16 bg-[url('/assets/bg.png')] bg-cover bg-top bg-no-repeat">
-      <div className="container mx-auto  2xl:h-[76vh] px-4" id="contacts">
+    <motion.section
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+      className="py-16 bg-[url('/assets/bg.png')] bg-cover bg-top bg-no-repeat"
+    >
+      <motion.div
+        ref={aboutRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: 0.5, duration: 1, ease: "easeOut" }}
+        className="container mx-auto  2xl:h-[76vh] px-4"
+        id="contacts"
+      >
         <div className="flex flex-col gap-8 py-8">
           <div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold">
@@ -63,9 +77,15 @@ export default function Contacts() {
                   .slice()
                   .sort((a, b) => a.name.localeCompare(b.name))
                   .map((item) => (
-                    <button
+                    <motion.button
                       className="h-24 w-24 rounded-2xl hover:border border-dark hover:scale-105 hover:bg-accent-green hover:text-dark hover:shadow transition-all duration-300"
                       key={item.id}
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0 },
+                      }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      whileHover={{ rotate: 5 }}
                     >
                       <a
                         href={item.link}
@@ -74,13 +94,13 @@ export default function Contacts() {
                         <i className={`${item.icon} text-4xl`}></i>
                         <div>{item.name}</div>
                       </a>
-                    </button>
+                    </motion.button>
                   ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

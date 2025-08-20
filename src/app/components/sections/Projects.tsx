@@ -1,12 +1,12 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ButtonPrimary } from "@/app/components/common/Buttons";
 import { ProjectCardSkeleton } from "@/app/components/feedback/Skeletons";
 import API_URL from "@/lib/apiConfig";
 import { Modal } from "../layout/Modal";
 import { COLORS } from "@/utils/colors";
+
+import { motion, useInView } from "framer-motion";
 
 interface Project {
   id: string;
@@ -35,6 +35,9 @@ export default function Projects() {
   const [demoUrl, setDemoUrl] = useState("");
   const [repoUrl, setRepoUrl] = useState("");
 
+  const aboutRef = useRef(null);
+  const isInView = useInView(aboutRef, { once: true, margin: "-100px" });
+
   const fetchProjects = async () => {
     try {
       const res = await fetch(`${API_URL}/api/projects`);
@@ -53,7 +56,13 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="" id="projects">
+    <motion.section
+      ref={aboutRef}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: 0.4, duration: 1.1, ease: "easeOut" }}
+      id="projects"
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-col gap-8 py-8">
           <div>
@@ -115,13 +124,6 @@ export default function Projects() {
                             ))}
                           </div>
                         </div>
-
-                        {/* Overlay */}
-                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <span className="text-white font-medium text-lg">
-                            Ver detalhes
-                          </span>
-                        </div>
                       </div>
                     </div>
                   ))}
@@ -139,14 +141,20 @@ export default function Projects() {
             repoUrl={repoUrl}
             techs={techs}
           />
-          <div className="flex justify-center ">
+
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center "
+          >
             <ButtonPrimary url="/projects" className="mt-4 font-bold">
               {" "}
               Ver todos os projetos
             </ButtonPrimary>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
